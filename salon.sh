@@ -46,7 +46,7 @@ then
   fi
 fi
 # get time
-echo -e "\nWhat time would you like your $SERVICE, $NAME?" 
+echo -e "\nWhat time would you like your $(echo $SERVICE | sed -r 's/^ *| *$//g'), $(echo $NAME | sed -r 's/^ *| *$//g')?" 
 read TIME
 TIME_RESULT=$($PSQL "INSERT INTO appointments (customer_id, service_id, time) VALUES ('$CUSTOMER_ID','$SERVICE_ID_SELECTED','$TIME')")
-echo -e "\nI have put you down for a $SERVICE at $TIME, $NAME."
+echo -e "\nI have put you down for a $(echo $SERVICE | sed -r 's/^ *| *$//g') at $(echo $TIME | sed -r 's/^ *| *$//g'), $(echo $NAME | sed -r 's/^ *| *$//g')."
